@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.IO;
+using static System.Console;
 namespace BinaryWriterReader
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("***** Fun with Binary Writers / Readers *****\n");
+            WriteLine("***** Fun with Binary Writers / Readers *****\n");
 
             // Open a binary writer for a file.
             FileInfo f = new FileInfo("BinFile.dat");
@@ -19,7 +14,7 @@ namespace BinaryWriterReader
             {
                 // Print out the type of BaseStream.
                 // (System.IO.FileStream in this case).
-                Console.WriteLine("Base stream is: {0}", bw.BaseStream);
+                WriteLine("Base stream is: {bw.BaseStream}");
 
                 // Create some data to save in the file.
                 double aDouble = 1234.67;
@@ -33,12 +28,12 @@ namespace BinaryWriterReader
             }
             using (BinaryReader br = new BinaryReader(f.OpenRead()))
             {
-                Console.WriteLine(br.ReadDouble());
-                Console.WriteLine(br.ReadInt32());
-                Console.WriteLine(br.ReadString());
+                WriteLine(br.ReadDouble());
+                WriteLine(br.ReadInt32());
+                WriteLine(br.ReadString());
             }
-                Console.WriteLine("Done!");
-            Console.ReadLine();
+                WriteLine("Done!");
+            ReadLine();
         }
     }
 }
